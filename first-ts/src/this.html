@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const green = {
+            name: "green",
+            age: 30
+        }
+        const blue = {
+            name: "blue",
+            age: 30
+        }
+        function showName(){
+            console.log(this.name);
+        }
+
+        showName(); //this는window
+        //call 메소드는 모든 함수에 사용가능, this를 특정 값으로 지정할 때 쓴다
+        showName.call(green);   //this는 green객체
+        showName.call(blue);    //this는 blue객체
+        const bella = {
+            name:"bella"
+        }
+        function update(birth,job){
+            this.birth = birth;
+            this.job = job;
+        }
+        const updatebella = update.bind(bella);
+        updatebella(1999,"police");
+        console.log(bella);
+        update.call(green,1998,"teacher");
+        console.log(green);
+        update.apply(blue,[2002,"student"]);
+        console.log(blue);
+        const numArr = [3,10,12,15,20,1,2];
+        // const min = Math.min(1,2,3,4,5) //()안에 numArr배열넣으면 안됨
+        const min = Math.min(1,2,3,4,5);
+        const max = Math.max(1,2,3,4,5);
+        const min2 = Math.min.call(null,...numArr);
+        const min3 = Math.min.apply(null,numArr);
+        Math.min(1,2,3,4,5)
+        Math.min.apply(null,[1,2,3,4,5])
+
+        mySite = {
+            name: 'website',
+            getSite:function(){
+                return this.name;
+            }
+        }
+        mySite.getSite();
+
+        const getYoursite = mySite.getSite;
+        console.log(getYoursite());
+        const getMysite = getYoursite.bind(mySite);
+        console.log(getMysite());
+
+        const user = {
+            name:"bella",
+            showName: function(){
+                console.log(`hello.${this.name}`);
+            }
+        }
+        user.showName();
+        let fn = user.showName;
+        fn.call(user)
+        fn.apply(user)
+        let boundFn = fn.bind(user);
+        boundFn();
+    </script>
+</body>
+</html>

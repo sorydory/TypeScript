@@ -1,0 +1,28 @@
+{
+  //포함되어질 파일
+  "include" : [
+    "src/**/*.ts"
+  ],
+  //노드패키지는 타입스크립트 컴파일 대상에서 제외시킴
+  "exclude" : [
+    "node_modules"
+  ],
+  //타입스크립트 컴파일러에 대한 옵션 지정
+  "compilerOptions": {
+    //자바스크립트 구문 지정
+    "target": "ES6",                     
+  // Modules
+  "module": "commonjs",
+  // 타입스크립트 파일 위치
+  "rootDir" : "src",
+  //자바스크립트 파일 폴더
+  "outDir" : "dist",
+  //암묵적으로 any타입을 가지는 것을 허락하지 않음
+  // "noImplicitAny":true,
+  // //엄격한 널타입 체크
+  // "strictNullChecks" : true,
+  "strict" : true,
+  //컴파일시 주석 제거하기 지정
+  "removeComments": true
+  }
+}
